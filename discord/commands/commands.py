@@ -411,7 +411,7 @@ class SlashCommand(ApplicationCommand):
                 if p_obj.default != inspect.Parameter.empty:
                     option.required = False
 
-            option.default = option.default or p_obj.default
+            option.default = option.default if option.default is not None else p_obj.default
 
             if option.default == inspect.Parameter.empty:
                 option.default = None
